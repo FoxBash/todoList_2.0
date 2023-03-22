@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>TO DO version 2.0</h1>
+    <a th:href="@{/add}" class="btn btn-primary">Add </a>
+    <table class="table table table-dark table-striped table-responsive" >
+        <thead>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr th:each="item :${items}">
+            <td th:text="${item.id}">ID</td>
+         <td th:text="${item.title}">   <a th:href="@{/view/{id}(id=${item.id})}" class="btn btn-dark">Title
+         </a></td>
+            <td>
+            <a th:href="@{/update/{id}(id=${item.id})}" class="btn btn-dark">Update</a>
+            <a th:href="@{/remove/{id}(id=${item.id})}" class="btn btn-dark">delete</a>
+             </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
